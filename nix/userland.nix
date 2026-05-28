@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, pkgs-unstable }:
 with pkgs; [
   # editor
-  neovim
+  pkgs-unstable.neovim
 
   # terminal multiplexer
   tmux
@@ -23,6 +23,9 @@ with pkgs; [
   # lang: js/ts (node version managed by nvm)
   pnpm
   bun
+  nodePackages.typescript-language-server
+  tailwindcss-language-server
+  pyright
 
   # lang: go
   go
@@ -30,4 +33,9 @@ with pkgs; [
   # nix
   nil
   devbox
+
+  # nvim support
+  luarocks
+  stylua
+  tree-sitter
 ]
