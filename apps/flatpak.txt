@@ -1,0 +1,6 @@
+com.brave.Browser
+com.discordapp.Discord
+com.slack.Slack
+org.telegram.desktop
+org.signal.Signal
+md.obsidian.Obsidian
