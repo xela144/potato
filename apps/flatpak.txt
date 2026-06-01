@@ -1,3 +1,4 @@
+com.bambulab.BambuStudio
 com.brave.Browser
 com.discordapp.Discord
 com.slack.Slack
