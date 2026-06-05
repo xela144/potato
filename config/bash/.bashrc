@@ -21,6 +21,7 @@ source ~/.nix-profile/share/fzf/key-bindings.bash
 source ~/.nix-profile/share/fzf/completion.bash
 
 # direnv
+export DIRENV_LOG_FORMAT="direnv: %s"
 command -v direnv &>/dev/null && eval "$(direnv hook bash)"
 
 # PS1
