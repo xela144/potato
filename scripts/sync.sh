@@ -16,5 +16,4 @@ fi
 if [[ -s "$ROOT/apps/flatpak.txt" ]]; then
   mapfile -t FLATPAKS < <(grep -vE '^\s*#|^\s*$' "$ROOT/apps/flatpak.txt")
   [[ ${#FLATPAKS[@]} -gt 0 ]] && flatpak install -y flathub "${FLATPAKS[@]}"
-  flatpak update -y
 fi
