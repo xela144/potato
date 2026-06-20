@@ -16,6 +16,7 @@ with pkgs; [
   bat
   eza
   direnv
+  lazygit
 
   # lang: python
   uv
