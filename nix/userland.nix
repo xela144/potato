@@ -8,36 +8,34 @@ with pkgs; [
   xclip
 
   # shell tools
-  less
-  ripgrep
+  bat
+  direnv
+  eza
   fd
   fzf
-  jq
-  bat
-  eza
-  direnv
-  lazygit
   hunk-pkg
+  jq
+  lazygit
+  less
+  ripgrep
   tldr
 
-  # lang: python
+  # languages
+  go
   uv
 
-  # lang: js/ts (node version managed by nvm)
-  pnpm
+  # js/ts
   bun
   nodePackages.typescript-language-server
-  tailwindcss-language-server
+  pnpm
   pyright
-
-  # lang: go
-  go
+  tailwindcss-language-server
 
   # nix
-  nil
   devbox
+  nil
 
-  # nvim support
+  # lua/nvim
   luarocks
   stylua
   tree-sitter
