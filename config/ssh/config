@@ -3,3 +3,9 @@ Host github.com
     User git
     IdentityFile ~/.ssh/id_ed25519_xela
     IdentitiesOnly yes
+
+Host codeburg
+    HostName codeburg.org
+    User git
+    IdentityFile ~/.ssh/id_ed25519_xela_codeburg
+    IdentitiesOnly yes

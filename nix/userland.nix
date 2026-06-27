@@ -17,6 +17,7 @@ with pkgs; [
   eza
   direnv
   lazygit
+  tldr
 
   # lang: python
   uv
