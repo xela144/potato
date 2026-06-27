@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable }:
+{ pkgs, pkgs-unstable, hunk-pkg }:
 with pkgs; [
   # editor
   pkgs-unstable.neovim
@@ -17,6 +17,7 @@ with pkgs; [
   eza
   direnv
   lazygit
+  hunk-pkg
   tldr
 
   # lang: python
