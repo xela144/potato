@@ -22,6 +22,7 @@ with pkgs; [
 
   # languages
   go
+  rustup
   uv
 
   # js/ts
