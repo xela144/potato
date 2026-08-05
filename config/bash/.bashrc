@@ -1,3 +1,8 @@
+# nix
+unset __ETC_PROFILE_NIX_SOURCED
+[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+[ -e "/etc/profile.d/nix.sh" ] && . "/etc/profile.d/nix.sh"
+
 # history
 export HISTFILESIZE=-1
 export HISTSIZE=-1
