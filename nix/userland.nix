@@ -27,6 +27,7 @@ with pkgs; [
 
   # js/ts
   bun
+  nodejs
   nodePackages.typescript-language-server
   pnpm
   pyright

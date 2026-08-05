@@ -5,3 +5,4 @@ com.slack.Slack
 org.telegram.desktop
 org.signal.Signal
 md.obsidian.Obsidian
+org.kde.kdenlive

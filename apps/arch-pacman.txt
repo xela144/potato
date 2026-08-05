@@ -1,1 +1,4 @@
 ghostty
+supercollider
+sc3-plugins
+nmap
