@@ -34,9 +34,11 @@ potato/
     link.sh          # symlinks config into $HOME
     sync.sh
   bootstrap/
-    arch.sh          # Arch Linux
-    ubuntu.sh        # Ubuntu
-    common.sh
+    arch.sh            # Arch Linux desktop
+    ubuntu.sh          # Ubuntu desktop
+    debian-headless.sh # Debian, headless dev environment
+    common.sh          # shared: git config, nix install
+    flatpak.sh         # shared: flatpak installs (desktop only)
 ```
 
 ## New machine setup
