@@ -1,44 +1,53 @@
 #!/usr/bin/env bash
 
-# Encrypted, deduplicated backup of keys/creds/history/media to a restic
-# repo that lives inside the Nextcloud sync folder -- the Nextcloud desktop
-# client handles the actual upload, restic just handles encryption + dedup.
+# Backup of keys/creds/history/media into a timestamped tarball dropped in
+# the Nextcloud sync folder -- the Nextcloud desktop client handles the
+# actual upload.
 #
-# One-time setup before first run:
-#   mkdir -p ~/.config/restic
-#   openssl rand -base64 32 > ~/.config/restic/password
-#   chmod 600 ~/.config/restic/password
-#   Save that password in KeePassXC -- it's the only way to decrypt this
-#   backup from a different machine.
+# Not encrypted. This is fine as long as the machine disk and the Nextcloud
+# account are both trusted; revisit with restic (already in
+# nix/userland.nix) if that stops being true.
 
 set -euo pipefail
 
-RESTIC_REPO="$HOME/Nextcloud/backups/restic-repo"
-PASSWORD_FILE="$HOME/.config/restic/password"
+DEST_DIR="$HOME/Nextcloud/backups"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+ARCHIVE="$DEST_DIR/potato-backup-$STAMP.tar.gz"
 
 SOURCES=(
-  "$HOME/.ssh"
-  "$HOME/.aws"
-  "$HOME/.bash_unlimited_history"
-  "$HOME/Videos"
-  "$HOME/Downloads"
-  "$HOME/Pictures"
-  "$HOME/tmp"
-  "$HOME/code"
+  ".ssh"
+  ".aws"
+  ".bash_unlimited_history"
+  "Videos"
+  "Downloads"
+  "Pictures"
+  "tmp"
+  "code"
 )
 
-if [[ ! -f "$PASSWORD_FILE" ]]; then
-  echo "Missing $PASSWORD_FILE -- see setup instructions at the top of this script." >&2
-  exit 1
-fi
+EXCLUDES=(
+  ".git"
+  "node_modules"
+  ".venv"
+  "venv"
+  "__pycache__"
+  "*.pyc"
+  ".tox"
+  ".mypy_cache"
+  ".pytest_cache"
+  "target"
+  ".next"
+  "dist"
+  "build"
+)
 
-export RESTIC_REPOSITORY="$RESTIC_REPO"
-export RESTIC_PASSWORD_FILE="$PASSWORD_FILE"
+mkdir -p "$DEST_DIR"
 
-if ! restic snapshots >/dev/null 2>&1; then
-  mkdir -p "$RESTIC_REPO"
-  restic init
-fi
+TAR_EXCLUDE_ARGS=()
+for pattern in "${EXCLUDES[@]}"; do
+  TAR_EXCLUDE_ARGS+=(--exclude="$pattern")
+done
 
-restic backup "${SOURCES[@]}"
-restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --prune
+tar -czf "$ARCHIVE" "${TAR_EXCLUDE_ARGS[@]}" -C "$HOME" "${SOURCES[@]}"
+
+echo "Wrote $ARCHIVE"
