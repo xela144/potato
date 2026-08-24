@@ -37,6 +37,9 @@ with pkgs; [
   devbox
   nil
 
+  # backup
+  restic
+
   # lua/nvim
   luarocks
   stylua

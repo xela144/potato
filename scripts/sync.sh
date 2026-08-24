@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# Ensure that declared packages are present on the machine. Does not do
+# a package upgrade for any installed packages.
+
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
