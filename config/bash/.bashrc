@@ -44,3 +44,10 @@ export PATH="$PATH:$HOME/.local/bin/"
 
 # opencode
 export PATH=/home/alex/.opencode/bin:$PATH
+
+# Copy stdin to system clipboard using OSC 52 terminal escape sequence. Works over ssh
+osc52() {
+  local input
+  input=$(cat | base64 | tr -d '\n')
+  printf "\e]52;c;%s\a" "$input"
+}
