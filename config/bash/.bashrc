@@ -41,3 +41,6 @@ export PATH="$PATH:$HOME/.local/bin/"
 
 # machine-local config (not tracked in repo)
 [ -f ~/.bash_local ] && source ~/.bash_local
+
+# opencode
+export PATH=/home/alex/.opencode/bin:$PATH
