@@ -36,6 +36,8 @@ PS1='\[\e[1;35m\][\u@\h \[\e[1;34m\]\W\[\e[0;36m\]$(b=$(parse_git_branch); [ -n 
 
 set -o vi
 
+# zoxide
+eval "$(zoxide init bash)"
 
 export PATH="$PATH:$HOME/.local/bin/"
 

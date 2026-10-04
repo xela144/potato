@@ -19,6 +19,8 @@ with pkgs; [
   less
   ripgrep
   tldr
+  yazi
+  zoxide
 
   # languages
   go
