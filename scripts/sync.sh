@@ -17,12 +17,12 @@ fi
 
 "$ROOT/scripts/link.sh"
 
-if [[ -s "$ROOT/apps/arch-pacman.txt" ]]; then
+if command -v pacman &>/dev/null && [[ -s "$ROOT/apps/arch-pacman.txt" ]]; then
   mapfile -t PKGS < <(grep -vE '^\s*#|^\s*$' "$ROOT/apps/arch-pacman.txt")
   [[ ${#PKGS[@]} -gt 0 ]] && sudo pacman -S --needed "${PKGS[@]}"
 fi
 
-if [[ -s "$ROOT/apps/flatpak.txt" ]]; then
+if command -v flatpak &>/dev/null && [[ -s "$ROOT/apps/flatpak.txt" ]]; then
   mapfile -t FLATPAKS < <(grep -vE '^\s*#|^\s*$' "$ROOT/apps/flatpak.txt")
   [[ ${#FLATPAKS[@]} -gt 0 ]] && flatpak install -y flathub "${FLATPAKS[@]}"
 fi

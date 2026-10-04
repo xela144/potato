@@ -9,8 +9,8 @@ UPGRADE_FLATPAK=false
 
 if [[ $# -eq 0 ]]; then
   UPGRADE_NIX=true
-  UPGRADE_PACMAN=true
-  UPGRADE_FLATPAK=true
+  command -v pacman &>/dev/null && UPGRADE_PACMAN=true
+  command -v flatpak &>/dev/null && UPGRADE_FLATPAK=true
 else
   for arg in "$@"; do
     case "$arg" in
