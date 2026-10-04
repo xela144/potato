@@ -7,8 +7,13 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-nix profile remove userland 2>/dev/null || true
-nix profile add "$ROOT#userland"
+# Upgrade in place so a failed or interrupted run leaves the current
+# userland installed instead of removing it first.
+if nix profile list --json | grep -q '"userland":'; then
+  nix profile upgrade userland
+else
+  nix profile add "$ROOT#userland"
+fi
 
 "$ROOT/scripts/link.sh"
 
