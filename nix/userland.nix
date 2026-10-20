@@ -10,6 +10,7 @@ with pkgs; [
   # shell tools
   bat
   direnv
+  dnsutils
   eza
   fd
   fzf
@@ -20,6 +21,7 @@ with pkgs; [
   ripgrep
   tldr
   yazi
+  zip
   zoxide
 
   # languages
