@@ -41,7 +41,7 @@ export EDITOR=nvim
 # zoxide
 eval "$(zoxide init bash)"
 
-export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/abin"
 
 # machine-local config (not tracked in repo)
 [ -f ~/.bash_local ] && source ~/.bash_local
